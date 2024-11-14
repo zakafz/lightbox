@@ -1,7 +1,8 @@
 import React from "react";
+import Overlay from "./components/overlay";
 import Frame from "./components/frame";
 import Image from "./components/image";
-import Overlay from "./components/overlay";
+
 
 const Lightbox = ({
   title,
