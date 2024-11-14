@@ -11,16 +11,26 @@ const Frame = (props: {
   return (
     <div
       className={`p-5 pb-2 px-2 rounded-3xl z-10 ${
-        props.theme === "dark" ? "bg-[#171717]" : "bg-[]"
+        props.theme === "dark" ? "bg-[#171717]" : "bg-[#fcfcfc]"
       }`}
     >
       <div className="w-full flex justify-between items-center mb-2 px-4">
-        <div className="font-medium text-lg">{props.title}</div>
+        <div
+          className={`font-medium text-lg ${
+            props.theme === "light" ? "text-black" : "text-white"
+          }`}
+        >
+          {props.title}
+        </div>
         <button
           onClick={() => props.setOpen(false)}
-          className="rounded-md hover:bg-[#262626] transition-all duration-200 p-1"
+          className={`rounded-md transition-all duration-200 p-1 ${props.theme === 'light' ? 'hover:bg-[#f3f3f3]' : 'hover:bg-[#262626]'}`}
         >
-          <XIcon className={`size-5 ${props.closeIconClassname}`} />
+          <XIcon
+            className={`size-5 ${props.theme === "light" ? "text-black" : "text-white"} ${
+              props.closeIconClassname
+            }`}
+          />
         </button>
       </div>
       {props.children}

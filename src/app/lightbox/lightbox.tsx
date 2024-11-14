@@ -13,6 +13,7 @@ const Lightbox = ({
   theme = "dark",
   opacity = 60,
   closeIconClassname,
+  allowDrag = true,
 }: {
   children: ReactNode;
   title: string;
@@ -22,6 +23,7 @@ const Lightbox = ({
   theme?: "light" | "dark";
   opacity?: number;
   closeIconClassname?: string;
+  allowDrag?: boolean;
 }) => {
   const [open, setOpen] = useState(false);
 
@@ -44,7 +46,7 @@ const Lightbox = ({
           closeIconClassname={closeIconClassname}
           setOpen={setOpen}
         >
-          <Image src={src} theme={theme} />
+          <Image src={src} theme={theme} allowDrag={allowDrag} />
         </Frame>
       </div>
       <div onClick={() => setOpen(true)}>{children}</div>
