@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
-const Overlay = () => {
+const Overlay = (props: { isClickable?: boolean; overlayClassname?: string }) => {
   return (
-    <div>Overlay</div>
-  )
-}
+    <div
+      className={`absolute top-0 left-0 w-screen h-screen min-w-screen min-h-screen bg-white ${props.overlayClassname}`}
+    />
+  );
+};
 
-export default Overlay
+export default Overlay;

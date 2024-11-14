@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Image = () => {
+const Image = (props: { src: string; }) => {
   return (
     <div>Image</div>
   )
