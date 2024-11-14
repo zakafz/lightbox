@@ -10,6 +10,7 @@ const Lightbox = ({
   overlayClassName,
   theme = "dark",
   opacity = 60,
+  closeIconClassname,
 }: {
   title: string;
   src: string;
@@ -17,16 +18,17 @@ const Lightbox = ({
   overlayClassName?: string;
   theme?: "light" | "dark";
   opacity?: number;
+  closeIconClassname?: string;
 }) => {
   return (
-    <div className="aboslute z-50">
+    <div className="absolute top-0 left-0 z-50 flex justify-center items-center h-screen max-h-screen w-screen max-w-screen">
       <Overlay
         isClickable={isOverlayClickable}
         overlayClassname={overlayClassName}
         opacity={opacity}
       />
-      <Frame title={title} theme={theme}>
-        <Image src={src} />
+      <Frame title={title} theme={theme} closeIconClassname={closeIconClassname}>
+        <Image src={src} theme={theme} />
       </Frame>
     </div>
   );

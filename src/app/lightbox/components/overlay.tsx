@@ -8,7 +8,7 @@ const Overlay = (props: {
   return (
     <div
       style={{ opacity: props.opacity / 100 }}
-      className={`absolute top-0 left-0 w-screen h-screen min-w-screen min-h-screen bg-black ${props.overlayClassname}`}
+      className={`absolute z-0 top-0 left-0 w-screen h-screen min-w-screen min-h-screen bg-black ${props.overlayClassname}`}
     />
   );
 };
