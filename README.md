@@ -68,6 +68,19 @@ Exemple:
 </Lightbox>
 ```
 
+## Image
+
+The main image shown. Custom class name for the image element itself, allowing additional styling like borders, shadows, or other visual effects. `allowDrag` determines whether the image inside the lightbox can be dragged.
+
+```javascript
+<Lightbox
+  allowDrag={true} 
+  imageClassName="string"
+>
+  // ...
+</Lightbox>
+```
+
 ## Overlay
 
 The overlay is the semi-transparent background layer that appears behind the lightbox content, dimming the rest of the screen. It allows users to focus on the lightbox while optionally providing a clickable area to close it.
@@ -78,19 +91,6 @@ Exemple:
   isOverlayClickable={true}
   overlayClassName="string"
   opacity={60}
->
-  // ...
-</Lightbox>
-```
-
-## Image
-
-The main image shown. Custom class name for the image element itself, allowing additional styling like borders, shadows, or other visual effects. `allowDrag` determines whether the image inside the lightbox can be dragged.
-
-```javascript
-<Lightbox
-  allowDrag={true} 
-  imageClassName="string"
 >
   // ...
 </Lightbox>
