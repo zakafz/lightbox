@@ -43,12 +43,15 @@ const Lightbox = ({
     };
 
     if (open) {
+      document.body.style.overflow = "hidden";
       window.addEventListener("keydown", handleEsc);
     } else {
+      document.body.style.overflow = "auto";
       window.removeEventListener("keydown", handleEsc);
     }
 
     return () => {
+      document.body.style.overflow = "auto";
       window.removeEventListener("keydown", handleEsc);
     };
   }, [open]);

@@ -1,30 +1,189 @@
 import React, { ReactNode } from "react";
 import Lightbox from "../lightbox/lightbox";
+import Link from "next/link";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+const {
+  atomOneDark,
+} = require("react-syntax-highlighter/dist/esm/styles/prism");
+
+const customStyle = {
+  ...atomOneDark,
+  backgroundColor: "transparent", // Removes background
+  textShadow: "none", // Remove any text shadow
+  'pre[class*="language-"]': {
+    backgroundColor: "transparent", // Removes background from the block
+    padding: "1rem", // Adds some padding around the code block
+    textShadow: "none", // Ensures no inset shadow
+    boxShadow: "none", // Removes any box shadow (inset effect)
+  },
+};
 
 const LandingPage = () => {
   return (
-    <div className="min-h-screen w-[40%] mx-auto pt-[200px]">
-      <div className="mx-auto flex flex-col w-fit items-center">
-        {/* Title */}
-        <div className="text-5xl font-medium tracking-wider mb-3">lightbox</div>
-        {/* Description */}
-        <div className="text-xl mb-4">
-          An image lightbox component for React.
+    <>
+      <div className="min-h-screen w-[40%] mx-auto pt-[200px]">
+        {/* Hero */}
+        <div className="mx-auto flex flex-col w-fit items-center mb-40">
+          {/* Title */}
+          <div className="text-5xl font-medium tracking-wider mb-3">
+            lightbox
+          </div>
+          {/* Description */}
+          <div className="text-xl mb-4">
+            An image lightbox component for React.
+          </div>
+          {/* Buttons */}
+          <div className="flex flex-row gap-5">
+            {/* Preview */}
+            <Lightbox
+              title="lightbox"
+              src="https://i.ibb.co/gw9kJcm/lightbox-4.png"
+            >
+              <CustomButton type={2}>Preview</CustomButton>
+            </Lightbox>
+            {/* Github */}
+            <Link target="_blank" href="https://github.com/zxk-afz">
+              <CustomButton type={1}>
+                <GithubIcon className="size-5" />
+                Github
+              </CustomButton>
+            </Link>
+          </div>
         </div>
-        {/* Buttons */}
-        <div className="flex flex-row gap-5">
-          {/* Preview */}
-          <Lightbox title="lightbox previewer" src="https://i.ibb.co/gw9kJcm/lightbox-4.png">
-            <CustomButton type={2}>Preview</CustomButton>
-          </Lightbox>
-          {/* Github */}
-          <CustomButton type={1}>
-            <GithubIcon className="size-5" />
-            Github
-          </CustomButton>
+
+        {/* Documentation */}
+        <div className="flex gap-2 flex-col text-md font-medium select-none">
+          Installation
+          <CodeBlock text="npm install lightbox" />
+          {/* Usage */}
+          <div className="h-12" />
+          Usage
+          <CodeBlock
+            text={`import { Lightbox } from 'lightbox'
+
+function App() {
+  return (
+    <div>
+      <Lightbox
+        title="string"
+        titleMaxLength={40}
+        titleClassName="string"
+        src="string"
+        isOverlayClickable={true}
+        overlayClassName="string"
+        opacity={60}
+        closeIconClassname="string"
+        theme="dark"
+        allowDrag={false}
+        imageClassName="string"
+      >
+        // ...
+      </Lightbox>
+    </div>
+  )
+}`}
+          />
+          {/* Title */}
+          <div className="h-12" />
+          Title
+          <div>
+            The title displayed in the lightbox. This can be truncated if it
+            exceeds the specified length (see titleMaxLength).
+          </div>
+          <CodeBlock
+            text={`<Lightbox
+  title="string"
+  titleMaxLength={40}
+  titleClassName="string"
+>
+  // ...
+</Lightbox>`}
+          />
+          {/* Source */}
+          <div className="h-12" />
+          Source
+          <div>
+            The URL or path of the image to be displayed in the lightbox. This
+            is the main image shown when the lightbox is opened.
+          </div>
+          <CodeBlock
+            text={`<Lightbox src="url/path">
+  // ...
+</Lightbox>`}
+          />
+          {/* Overlay */}
+          <div className="h-12" />
+          Overlay
+          <div>
+            The overlay is the semi-transparent background layer that appears
+            behind the lightbox content, dimming the rest of the screen. It
+            allows users to focus on the lightbox while optionally providing a
+            clickable area to close it.
+          </div>
+          <CodeBlock
+            text={`<Lightbox
+  isOverlayClickable={true}
+  overlayClassName="string"
+  opacity={60}
+>
+  // ...
+</Lightbox>`}
+          />
+          {/* Close */}
+          <div className="h-12" />
+          Close
+          <div>
+            A custom class name for the close button's icon (X icon) that can be
+            used to adjust its appearance, such as its size, color, or position.
+          </div>
+          <CodeBlock
+            text={`<Lightbox closeIconClassName="string">
+  // ...
+</Lightbox>`}
+          />
+          {/* Theme */}
+          <div className="h-12" />
+          Theme
+          <div>
+            Defines the visual theme of the lightbox. It adjusts the background
+            color and text color to either light or dark theme. "light" uses
+            lighter colors, and "dark" uses darker colors.
+          </div>
+          <CodeBlock
+            text={`<Lightbox theme="dark">
+  // ...
+</Lightbox>`}
+          />
+          {/* Image */}
+          <div className="h-12" />
+          Image
+          <div>
+            The main image shown. Custom class name for the image element
+            itself, allowing additional styling like borders, shadows, or other
+            visual effects. AllowDrag determines whether the image inside the
+            lightbox can be dragged.
+          </div>
+          <CodeBlock
+            text={`<Lightbox
+  allowDrag={true} 
+  imageClassName="string"
+>
+  // ...
+</Lightbox>`}
+          />
+          {/* End */}
+          <div className="h-20" />
+          <div className="flex flex-col gap-1">
+            This documentation provides a comprehensive overview of our lightbox
+            component,
+            <Link target="_blank" href="https://sonner.emilkowal.ski/" className="underline">
+              with a design inspired by modern interfaces like Sonner.
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
@@ -87,4 +246,29 @@ const CustomButton = (props: { children: ReactNode; type: 1 | 2 }) => {
     }
   }
   return render();
+};
+
+const CodeBlock = (props: { text: string }) => {
+  return (
+    <div className="w-full select-text rounded-lg font-normal text-sm font-mono border border-[#262626] bg-[#171717]">
+      <SyntaxHighlighter language="javascript" style={customStyle}>
+        {props.text}
+      </SyntaxHighlighter>
+    </div>
+  );
+};
+
+const Footer = () => {
+  return (
+    <div className="text-sm w-full py-10 mt-32 px-[30vw] bg-[#17171769] border-t border-[#262626] flex gap-1">
+      Made by
+      <Link
+        target="_blank"
+        href="https://github.com/zxk-afz"
+        className="font-bold hover:cursor-pointer"
+      >
+        Zxk-Afz.
+      </Link>
+    </div>
+  );
 };
