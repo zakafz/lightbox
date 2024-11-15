@@ -8,13 +8,13 @@ const {
 
 const customStyle = {
   ...atomOneDark,
-  backgroundColor: "transparent", // Removes background
-  textShadow: "none", // Remove any text shadow
+  backgroundColor: "transparent",
+  textShadow: "none",
   'pre[class*="language-"]': {
-    backgroundColor: "transparent", // Removes background from the block
-    padding: "1rem", // Adds some padding around the code block
-    textShadow: "none", // Ensures no inset shadow
-    boxShadow: "none", // Removes any box shadow (inset effect)
+    backgroundColor: "transparent",
+    padding: "1rem", 
+    textShadow: "none", 
+    boxShadow: "none", 
   },
 };
 
