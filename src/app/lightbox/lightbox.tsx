@@ -13,6 +13,8 @@ const Lightbox = ({
   closeIconClassname,
   allowDrag = true,
   imageClassName,
+  titleMaxLength = 30,
+  titleClassName,
 }: {
   children: ReactNode;
   title: string;
@@ -24,8 +26,14 @@ const Lightbox = ({
   closeIconClassname?: string;
   allowDrag?: boolean;
   imageClassName?: string;
+  titleMaxLength?: number;
+  titleClassName?: string;
 }) => {
   const [open, setOpen] = useState(false);
+  const truncatedTitle =
+    title.length > titleMaxLength
+      ? title.slice(0, titleMaxLength) + "..."
+      : title;
 
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
@@ -59,11 +67,12 @@ const Lightbox = ({
           setOpen={setOpen}
         />
         <Frame
-          title={title}
+          title={truncatedTitle}
           theme={theme}
           closeIconClassname={closeIconClassname}
           setOpen={setOpen}
           open={open}
+          titleClassName={titleClassName}
         >
           <Image
             src={src}
@@ -134,6 +143,7 @@ const Frame = ({
   closeIconClassname,
   setOpen,
   open,
+  titleClassName,
 }: {
   children: ReactNode;
   title: string;
@@ -141,19 +151,20 @@ const Frame = ({
   closeIconClassname?: string;
   setOpen: (state: boolean) => void;
   open: boolean;
+  titleClassName?: string;
 }) => {
   return (
     <div
       className={`relative z-10 rounded-3xl py-5 px-2 pb-2 transform transition-all duration-300 
-          ${open ? "opacity-100 scale-100" : "opacity-0 scale-95"} 
-          ${theme === "dark" ? "bg-[#171717]" : "bg-[#fcfcfc]"}
-        `}
+              ${open ? "opacity-100 scale-100" : "opacity-0 scale-95"} 
+              ${theme === "dark" ? "bg-[#171717]" : "bg-[#fcfcfc]"}
+            `}
     >
-      <div className="flex items-center justify-between mb-2 px-4">
+      <div className="flex items-center justify-between mb-2 pr-4 pl-5">
         <div
-          className={`text-lg font-medium ${
-            theme === "light" ? "text-black" : "text-white"
-          }`}
+          className={`text-lg font-medium 
+            ${titleClassName}
+            ${theme === "light" ? "text-black" : "text-white"}`}
         >
           {title}
         </div>
