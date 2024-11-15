@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# lightbox
 
-## Getting Started
+## Installation
 
-First, run the development server:
-
+To install Lightbox, use the following npm command:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install lightbox
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To use Lightbox in your project, import it as follows:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+import { Lightbox } from 'lightbox'
 
-## Learn More
+function App() {
+  return (
+    <div>
+      <Lightbox
+        title="string"
+        titleMaxLength={40}
+        titleClassName="string"
+        src="string"
+        isOverlayClickable={true}
+        overlayClassName="string"
+        opacity={60}
+        closeIconClassname="string"
+        theme="dark"
+        allowDrag={false}
+        imageClassName="string"
+      >
+        // ...
+      </Lightbox>
+    </div>
+  )
+}
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Title
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The title displayed in the lightbox. This can be truncated if it exceeds the specified length (see `titleMaxLength`).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Example:
+```bash
+<Lightbox title="string" titleMaxLength={40} titleClassName="string"
+  // ...
+</Lightbox>
+```
 
-## Deploy on Vercel
+## Source
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The URL or path of the image to be displayed in the lightbox. This is the main image shown when the lightbox is opened.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Example:
+```bash
+<Lightbox src="url/path"> // ... </Lightbox>
+```
+
+## Theme
+
+Defines the visual theme of the lightbox. It adjusts the background color and text color to either light or dark theme. "light" uses lighter colors, and "dark" uses darker colors.
+
+Exemple:
+```bash
+<Lightbox theme="dark">
+  // ...
+</Lightbox>
+```
+
+## Overlay
+
+The overlay is the semi-transparent background layer that appears behind the lightbox content, dimming the rest of the screen. It allows users to focus on the lightbox while optionally providing a clickable area to close it.
+
+Exemple:
+```bash
+<Lightbox
+  isOverlayClickable={true}
+  overlayClassName="string"
+  opacity={60}
+>
+  // ...
+</Lightbox>
+```
+
+## Image
+
+The main image shown. Custom class name for the image element itself, allowing additional styling like borders, shadows, or other visual effects. `allowDrag` determines whether the image inside the lightbox can be dragged.
+
+```bash
+<Lightbox
+  allowDrag={true} 
+  imageClassName="string"
+>
+  // ...
+</Lightbox>
+```
+
+## Close
+
+A custom class name for the close button's icon (X icon) that can be used to adjust its appearance, such as its size, color, or position.
+
+Exemple:
+```bash
+<Lightbox closeIconClassName="string">
+  // ...
+</Lightbox>
+```
