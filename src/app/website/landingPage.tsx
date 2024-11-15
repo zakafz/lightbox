@@ -42,7 +42,7 @@ const LandingPage = () => {
               <CustomButton type={2}>Preview</CustomButton>
             </Lightbox>
             {/* Github */}
-            <Link target="_blank" href="https://github.com/zxk-afz">
+            <Link target="_blank" href="https://github.com/zxk-afz/lightbox">
               <CustomButton type={1}>
                 <GithubIcon className="size-5" />
                 Github
