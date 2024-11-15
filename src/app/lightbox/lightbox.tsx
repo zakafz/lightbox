@@ -1,5 +1,6 @@
 "use client";
 import React, { ReactNode, useState, useEffect } from "react";
+import Image from "next/image";
 
 // Lightbox
 const Lightbox = ({
@@ -15,6 +16,7 @@ const Lightbox = ({
   imageClassName,
   titleMaxLength = 30,
   titleClassName,
+  alt
 }: {
   children: ReactNode;
   title: string;
@@ -28,6 +30,7 @@ const Lightbox = ({
   imageClassName?: string;
   titleMaxLength?: number;
   titleClassName?: string;
+  alt: string;
 }) => {
   const [open, setOpen] = useState(false);
   const truncatedTitle =
@@ -76,8 +79,9 @@ const Lightbox = ({
           open={open}
           titleClassName={titleClassName}
         >
-          <Image
+          <MainImage
             src={src}
+            alt={alt}
             theme={theme}
             allowDrag={allowDrag}
             className={imageClassName}
@@ -114,21 +118,24 @@ const Overlay = ({
 };
 
 // Lightbox image component
-const Image = ({
+const MainImage = ({
   src,
   theme,
   allowDrag,
   className,
+  alt,
 }: {
   src: string;
   theme: "light" | "dark";
   allowDrag: boolean;
   className?: string;
+  alt: string;
 }) => {
   return (
     <div className="w-full">
-      <img
+      <Image
         draggable={allowDrag}
+        alt={alt}
         src={src}
         className={`min-w-[30vw] max-w-[90vw] max-h-[85vh] rounded-2xl border
             ${theme === "light" ? "border-[#f3f3f3]" : "border-[#262626]"}
@@ -189,7 +196,7 @@ const Frame = ({
 
 // X icon asset
 const XIcon = (props: { className?: string }) => {
-return (
+  return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"

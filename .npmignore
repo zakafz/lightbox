@@ -1,0 +1,9 @@
+src/app/website/
+.next/
+public/
+node_modules/
+next-env.d.ts
+next.config.ts
+tailwind.config.ts
+tsconfig.json
+tsup.config.ts

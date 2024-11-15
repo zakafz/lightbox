@@ -1,22 +1,9 @@
-import React, { ReactNode } from "react";
+"use client";
+import React, { ReactNode, useEffect, useState } from "react";
 import Lightbox from "../lightbox/lightbox";
 import Link from "next/link";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-const {
-  atomOneDark,
-} = require("react-syntax-highlighter/dist/esm/styles/prism");
-
-const customStyle = {
-  ...atomOneDark,
-  backgroundColor: "transparent",
-  textShadow: "none",
-  'pre[class*="language-"]': {
-    backgroundColor: "transparent",
-    padding: "1rem", 
-    textShadow: "none", 
-    boxShadow: "none", 
-  },
-};
+import Prism from "prismjs";
+import "prismjs/themes/prism-okaidia.css"; // You can choose any theme from Prism
 
 const LandingPage = () => {
   return (
@@ -38,6 +25,7 @@ const LandingPage = () => {
             <Lightbox
               title="lightbox"
               src="https://i.ibb.co/gw9kJcm/lightbox-4.png"
+              alt="lightbox"
             >
               <CustomButton type={2}>Preview</CustomButton>
             </Lightbox>
@@ -52,7 +40,7 @@ const LandingPage = () => {
         </div>
 
         {/* Documentation */}
-        <div className="flex gap-2 flex-col text-md font-medium select-none">
+        <div className="flex gap-2 flex-col text-md font-medium">
           Installation
           <CodeBlock text="npm install lightbox" />
           {/* Usage */}
@@ -176,7 +164,11 @@ function App() {
           <div className="flex flex-col gap-1">
             This documentation provides a comprehensive overview of our lightbox
             component,
-            <Link target="_blank" href="https://sonner.emilkowal.ski/" className="underline">
+            <Link
+              target="_blank"
+              href="https://sonner.emilkowal.ski/"
+              className="underline"
+            >
               with a design inspired by modern interfaces like Sonner.
             </Link>
           </div>
@@ -249,12 +241,40 @@ const CustomButton = (props: { children: ReactNode; type: 1 | 2 }) => {
 };
 
 const CodeBlock = (props: { text: string }) => {
+  const [highlightedCode, setHighlightedCode] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Only highlight the code on the client side
+    const code = Prism.highlight(
+      props.text,
+      Prism.languages.javascript,
+      "javascript"
+    );
+    setHighlightedCode(code);
+  }, [props.text]);
+
+  if (!highlightedCode) {
+    // Render nothing or a loading state until the client-side code is ready
+    return <div className="w-full h-[50px] rounded-lg font-normal text-sm font-mono border border-[#262626] bg-[#17171769]"/>
+  }
+
   return (
-    <div className="w-full select-text rounded-lg font-normal text-sm font-mono border border-[#262626] bg-[#171717]">
-      <SyntaxHighlighter language="javascript" style={customStyle}>
-        {props.text}
-      </SyntaxHighlighter>
-    </div>
+    <pre
+      className="w-full rounded-lg font-normal text-sm font-mono border border-[#262626]"
+      style={{
+        padding: "1rem",
+        borderRadius: "8px",
+        backgroundColor: "#17171769",
+        fontFamily: "monospace",
+        overflowX: "auto",
+        fontSize: '13px'
+      }}
+    >
+      <code
+        className="language-javascript"
+        dangerouslySetInnerHTML={{ __html: highlightedCode }}
+      />
+    </pre>
   );
 };
 
