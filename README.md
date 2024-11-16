@@ -1,6 +1,6 @@
 # lightbox
 
-Lightbox Kit is a lightweight and customizable React component designed for creating visually appealing and interactive lightboxes. Whether you’re showcasing images, galleries, or any media, this component offers a sleek and user-friendly experience with configurable options.
+**Lightbox** Kit is a lightweight and customizable React component designed for creating visually appealing and interactive lightboxes. Whether you’re showcasing images, galleries, or any media, this component offers a sleek and user-friendly experience with configurable options.
 
 ## Installation
 
