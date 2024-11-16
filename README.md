@@ -4,7 +4,7 @@
 
 ## Links
 
-[](https://lightbox-kit.vercel.app/)
+[showcase](https://lightbox-kit.vercel.app/)
 
 [npm package](https://www.npmjs.com/package/lightbox-kit)
 
