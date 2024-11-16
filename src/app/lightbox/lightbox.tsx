@@ -137,7 +137,7 @@ const MainImage = ({
         draggable={allowDrag}
         alt={alt}
         src={src}
-        className={`rounded-2xl border max-w-[98%] max-h-[98%] w-auto h-auto
+        className={`rounded-2xl border max-w-full max-h-full w-auto h-auto
       ${theme === "light" ? "border-[#f3f3f3]" : "border-[#262626]"}
       ${className || ""}`}
         style={{
