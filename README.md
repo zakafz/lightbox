@@ -4,7 +4,7 @@
 
 ## Links
 
-[website](https://www.google.com)
+[](https://lightbox-kit.vercel.app/)
 
 [npm package](https://www.npmjs.com/package/lightbox-kit)
 

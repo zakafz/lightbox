@@ -4,12 +4,12 @@ import Lightbox from "../lightbox/lightbox";
 import Link from "next/link";
 import Prism from "prismjs";
 import "prismjs/themes/prism-okaidia.css";
-import lightboxImage from '@/images/lightbox.png';
+import lightboxImage from "@/images/lightbox.png";
 
 const LandingPage = () => {
   return (
     <>
-      <div className="min-h-screen w-[40%] mx-auto pt-[200px]">
+      <div className="min-h-screen w-[40%] max-2xl:w-[50%] max-xl:w-[60%] max-lg:w-[95%] mx-auto pt-[200px]">
         {/* Hero */}
         <div className="mx-auto flex flex-col w-fit items-center mb-40">
           {/* Title */}
@@ -23,11 +23,7 @@ const LandingPage = () => {
           {/* Buttons */}
           <div className="flex flex-row gap-5">
             {/* Preview */}
-            <Lightbox
-              title="lightbox"
-              src={lightboxImage}
-              alt="lightbox"
-            >
+            <Lightbox title="lightbox" src={lightboxImage} alt="lightbox">
               <CustomButton type={2}>Preview</CustomButton>
             </Lightbox>
             {/* Github */}
@@ -275,7 +271,9 @@ const CodeBlock = (props: { text: string }) => {
 
   if (!highlightedCode) {
     // Render nothing or a loading state until the client-side code is ready
-    return <div className="w-full h-[50px] rounded-lg font-normal text-sm font-mono border border-[#262626] bg-[#17171769]"/>
+    return (
+      <div className="w-full h-[50px] rounded-lg font-normal text-sm font-mono border border-[#262626] bg-[#17171769]" />
+    );
   }
 
   return (
@@ -287,7 +285,7 @@ const CodeBlock = (props: { text: string }) => {
         backgroundColor: "#17171769",
         fontFamily: "monospace",
         overflowX: "auto",
-        fontSize: '13px'
+        fontSize: "13px",
       }}
     >
       <code
