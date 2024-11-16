@@ -1,5 +1,7 @@
 # lightbox
 
+Lightbox Kit is a lightweight and customizable React component designed for creating visually appealing and interactive lightboxes. Whether you’re showcasing images, galleries, or any media, this component offers a sleek and user-friendly experience with configurable options.
+
 ## Installation
 
 To install Lightbox, use the following npm command:
@@ -22,6 +24,7 @@ function App() {
         titleMaxLength={40}
         titleClassName="string"
         src="string"
+        alt="string"
         isOverlayClickable={true}
         overlayClassName="string"
         opacity={60}
@@ -54,7 +57,7 @@ The URL or path of the image to be displayed in the lightbox. This is the main i
 
 Example:
 ```javascript
-<Lightbox src="url/path"> // ... </Lightbox>
+<Lightbox src="url/path" alt="description"> // ... </Lightbox>
 ```
 
 ## Theme

@@ -98,15 +98,15 @@ var MainImage = ({
   className,
   alt
 }) => {
-  return /* @__PURE__ */ React.createElement("div", { className: "w-full" }, /* @__PURE__ */ React.createElement(
+  return /* @__PURE__ */ React.createElement("div", { className: "relative w-full" }, /* @__PURE__ */ React.createElement(
     Image,
     {
       draggable: allowDrag,
       alt,
       src,
-      className: `min-w-[30vw] max-w-[90vw] max-h-[85vh] rounded-2xl border
-            ${theme === "light" ? "border-[#f3f3f3]" : "border-[#262626]"}
-            ${className || ""}`
+      className: `rounded-2xl border max-w-[95vw] w-fit h-fit max-h-[85vh] aspect-auto object-none
+      ${theme === "light" ? "border-[#f3f3f3]" : "border-[#262626]"}
+      ${className || ""}`
     }
   ));
 };

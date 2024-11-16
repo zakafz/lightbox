@@ -43,12 +43,12 @@ const LandingPage = () => {
         {/* Documentation */}
         <div className="flex gap-2 flex-col text-md font-medium">
           Installation
-          <CodeBlock text="npm install lightbox" />
+          <CodeBlock text="npm install lightbox-kit" />
           {/* Usage */}
           <div className="h-12" />
           Usage
           <CodeBlock
-            text={`import { Lightbox } from 'lightbox'
+            text={`import { Lightbox } from 'lightbox-kit'
 
 function App() {
   return (
@@ -58,6 +58,7 @@ function App() {
         titleMaxLength={40}
         titleClassName="string"
         src="string"
+        alt="string"
         isOverlayClickable={true}
         overlayClassName="string"
         opacity={60}
@@ -96,11 +97,29 @@ function App() {
             is the main image shown when the lightbox is opened.
           </div>
           <CodeBlock
-            text={`<Lightbox src="url/path">
+            text={`<Lightbox src="url/path" alt="description">
   // ...
 </Lightbox>`}
           />
           {/* Overlay */}
+          <div className="h-12" />
+          Title
+          <div>
+            The title displayed in the lightbox. This can be truncated if it
+            exceeds the specified length (see titleMaxLength).
+          </div>
+          <CodeBlock
+            text={`<Lightbox
+  title="string"
+  titleMaxLength={40}
+  titleClassName="string"
+>
+  // ...
+</Lightbox>`}
+          />
+          {/* Source */}
+          <div className="h-12" />
+          Source
           <div className="h-12" />
           Overlay
           <div>

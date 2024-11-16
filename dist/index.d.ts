@@ -1,9 +1,10 @@
 import React, { ReactNode } from 'react';
+import { StaticImageData } from 'next/image';
 
-declare const Lightbox: ({ children, title, src, isOverlayClickable, overlayClassName, theme, opacity, closeIconClassname, allowDrag, imageClassName, titleMaxLength, titleClassName, alt }: {
+declare const Lightbox: ({ children, title, src, isOverlayClickable, overlayClassName, theme, opacity, closeIconClassname, allowDrag, imageClassName, titleMaxLength, titleClassName, alt, }: {
     children: ReactNode;
     title: string;
-    src: string;
+    src: string | StaticImageData;
     isOverlayClickable?: boolean;
     overlayClassName?: string;
     theme?: "light" | "dark";
