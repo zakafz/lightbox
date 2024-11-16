@@ -132,18 +132,24 @@ const MainImage = ({
   alt: string;
 }) => {
   return (
-    <div className="relative w-full">
+    <div className="relative w-full h-full flex items-center justify-center">
       <Image
         draggable={allowDrag}
         alt={alt}
         src={src}
-        className={`rounded-2xl border max-w-[95vw] w-fit h-fit max-h-[85vh] aspect-auto object-none
+        className={`rounded-2xl border max-w-[98%] max-h-[98%] w-auto h-auto
       ${theme === "light" ? "border-[#f3f3f3]" : "border-[#262626]"}
       ${className || ""}`}
+        style={{
+          maxWidth: "95vw",
+          maxHeight: "85vh",
+          objectFit: "contain",
+        }}
       />
     </div>
   );
 };
+
 
 // Lightbox frame component
 const Frame = ({
