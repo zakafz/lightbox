@@ -1,7 +1,6 @@
 # lightbox
 
 ![npm](https://img.shields.io/npm/v/lightbox-kit)
-![npm downloads](https://img.shields.io/npm/dm/lightbox-kit)
 
 **Lightbox** Kit is a lightweight and customizable React component designed for creating visually appealing and interactive lightboxes. Perfect to showcase images, this component offers a sleek and user-friendly experience with configurable options.
 
