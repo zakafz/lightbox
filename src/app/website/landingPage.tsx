@@ -127,7 +127,7 @@ function App() {
   // ...
 </Lightbox>`}
           />
-          {/* Overlat */}
+          {/* Overlay */}
           <div className="h-12" />
           Overlay
           <div>
