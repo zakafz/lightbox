@@ -298,7 +298,7 @@ const CodeBlock = (props: { text: string }) => {
 
 const Footer = () => {
   return (
-    <div className="text-sm w-full py-10 mt-32 pl-[40%] max-2xl:pl-[50%] max-xl:pl-[60%] max-lg:pl-[95%] bg-[#17171769] border-t border-[#262626] flex gap-1">
+    <div className="text-sm w-full py-10 mt-32 pl-[30%] max-2xl:pl-[25%] max-xl:pl-[20%] max-lg:pl-[2.5%] bg-[#17171769] border-t border-[#262626] flex gap-1">
       Made by
       <Link
         target="_blank"
