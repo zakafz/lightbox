@@ -1,6 +1,6 @@
 "use client";
 import React, { ReactNode, useState, useEffect } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 // Lightbox
 const Lightbox = ({
@@ -16,11 +16,11 @@ const Lightbox = ({
   imageClassName,
   titleMaxLength = 30,
   titleClassName,
-  alt
+  alt,
 }: {
   children: ReactNode;
   title: string;
-  src: string;
+  src: string | StaticImageData;
   isOverlayClickable?: boolean;
   overlayClassName?: string;
   theme?: "light" | "dark";
@@ -125,21 +125,21 @@ const MainImage = ({
   className,
   alt,
 }: {
-  src: string;
+  src: string | StaticImageData;
   theme: "light" | "dark";
   allowDrag: boolean;
   className?: string;
   alt: string;
 }) => {
   return (
-    <div className="w-full">
+    <div className="relative w-full">
       <Image
         draggable={allowDrag}
         alt={alt}
         src={src}
-        className={`min-w-[30vw] max-w-[90vw] max-h-[85vh] rounded-2xl border
-            ${theme === "light" ? "border-[#f3f3f3]" : "border-[#262626]"}
-            ${className || ""}`}
+        className={`rounded-2xl border max-w-[95vw] w-fit h-fit max-h-[85vh] aspect-auto object-none
+      ${theme === "light" ? "border-[#f3f3f3]" : "border-[#262626]"}
+      ${className || ""}`}
       />
     </div>
   );

@@ -4,7 +4,7 @@
 
 To install Lightbox, use the following npm command:
 ```bash
-npm install lightbox
+npm install lightbox-kit
 ```
 
 ## Usage

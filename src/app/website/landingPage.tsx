@@ -3,7 +3,8 @@ import React, { ReactNode, useEffect, useState } from "react";
 import Lightbox from "../lightbox/lightbox";
 import Link from "next/link";
 import Prism from "prismjs";
-import "prismjs/themes/prism-okaidia.css"; // You can choose any theme from Prism
+import "prismjs/themes/prism-okaidia.css";
+import lightboxImage from '@/images/lightbox.png';
 
 const LandingPage = () => {
   return (
@@ -24,7 +25,7 @@ const LandingPage = () => {
             {/* Preview */}
             <Lightbox
               title="lightbox"
-              src="https://i.ibb.co/gw9kJcm/lightbox-4.png"
+              src={lightboxImage}
               alt="lightbox"
             >
               <CustomButton type={2}>Preview</CustomButton>
