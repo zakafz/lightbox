@@ -97,54 +97,6 @@ function App() {
   // ...
 </Lightbox>`}
           />
-          {/* Overlay */}
-          <div className="h-12" />
-          Title
-          <div>
-            The title displayed in the lightbox. This can be truncated if it
-            exceeds the specified length (see titleMaxLength).
-          </div>
-          <CodeBlock
-            text={`<Lightbox
-  title="string"
-  titleMaxLength={40}
-  titleClassName="string"
->
-  // ...
-</Lightbox>`}
-          />
-          {/* Source */}
-          <div className="h-12" />
-          Source
-          <div className="h-12" />
-          Overlay
-          <div>
-            The overlay is the semi-transparent background layer that appears
-            behind the lightbox content, dimming the rest of the screen. It
-            allows users to focus on the lightbox while optionally providing a
-            clickable area to close it.
-          </div>
-          <CodeBlock
-            text={`<Lightbox
-  isOverlayClickable={true}
-  overlayClassName="string"
-  opacity={60}
->
-  // ...
-</Lightbox>`}
-          />
-          {/* Close */}
-          <div className="h-12" />
-          Close
-          <div>
-            A custom class name for the close button's icon (X icon) that can be
-            used to adjust its appearance, such as its size, color, or position.
-          </div>
-          <CodeBlock
-            text={`<Lightbox closeIconClassName="string">
-  // ...
-</Lightbox>`}
-          />
           {/* Theme */}
           <div className="h-12" />
           Theme
@@ -172,6 +124,36 @@ function App() {
   allowDrag={true} 
   imageClassName="string"
 >
+  // ...
+</Lightbox>`}
+          />
+          {/* Overlat */}
+          <div className="h-12" />
+          Overlay
+          <div>
+            The overlay is the semi-transparent background layer that appears
+            behind the lightbox content, dimming the rest of the screen. It
+            allows users to focus on the lightbox while optionally providing a
+            clickable area to close it.
+          </div>
+          <CodeBlock
+            text={`<Lightbox 
+  isOverlayClickable={true}
+  overlayClassName="string"
+  opacity={60}
+>
+  // ...
+</Lightbox>`}
+          />
+          {/* Close */}
+          <div className="h-12" />
+          Close
+          <div>
+            A custom class name for the close button's icon (X icon) that can be
+            used to adjust its appearance, such as its size, color, or position.
+          </div>
+          <CodeBlock
+            text={`<Lightbox closeIconClassName="string">
   // ...
 </Lightbox>`}
           />
@@ -260,7 +242,6 @@ const CodeBlock = (props: { text: string }) => {
   const [highlightedCode, setHighlightedCode] = useState<string | null>(null);
 
   useEffect(() => {
-    // Only highlight the code on the client side
     const code = Prism.highlight(
       props.text,
       Prism.languages.javascript,
@@ -270,7 +251,6 @@ const CodeBlock = (props: { text: string }) => {
   }, [props.text]);
 
   if (!highlightedCode) {
-    // Render nothing or a loading state until the client-side code is ready
     return (
       <div className="w-full h-[50px] rounded-lg font-normal text-sm font-mono border border-[#262626] bg-[#17171769]" />
     );
