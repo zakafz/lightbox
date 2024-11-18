@@ -1,5 +1,5 @@
 "use client";
-import { StaticImageData } from "next/image";
+import Image, { StaticImageData } from "next/image";
 import React, { ReactNode, useState, useEffect } from "react";
 
 // Lightbox
@@ -131,20 +131,22 @@ const MainImage = ({
   className?: string;
   alt: string;
 }) => {
-  // Normalize the src for use with <img>
-  const imageSrc = typeof src === "string" ? src : src.src;
 
   return (
-    <div className="relative w-full h-full flex items-center justify-center" suppressHydrationWarning>
-      <img
+    <div className="relative w-full h-full flex items-center justify-center">
+      <Image
         draggable={allowDrag}
         alt={alt}
-        src={imageSrc} // Normalize the src to a string
+        width={100000}
+        height={100000}
+        src={src} 
         className={`rounded-2xl border max-w-full max-h-full w-auto h-auto
         ${theme === "light" ? "border-[#f3f3f3]" : "border-[#262626]"}
         ${className || ""}`}
         style={{
           maxWidth: "95vw",
+          width: '100%',
+          height: 'auto',
           maxHeight: "85vh",
           objectFit: "contain",
         }}
