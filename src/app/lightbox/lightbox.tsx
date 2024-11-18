@@ -133,10 +133,10 @@ const MainImage = ({
 }) => {
   return (
     <div className="relative w-full h-full flex items-center justify-center">
-      <Image
+      <img
         draggable={allowDrag}
         alt={alt}
-        src={src}
+        src={typeof src === "string" ? src : src.src}
         className={`rounded-2xl border max-w-full max-h-full w-auto h-auto
       ${theme === "light" ? "border-[#f3f3f3]" : "border-[#262626]"}
       ${className || ""}`}
