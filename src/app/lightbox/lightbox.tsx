@@ -1,6 +1,6 @@
 "use client";
 import React, { ReactNode, useState, useEffect } from "react";
-import Image, { StaticImageData } from "next/image";
+import { StaticImageData } from "next/image";
 
 // Lightbox
 const Lightbox = ({
