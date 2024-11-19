@@ -44,7 +44,8 @@ const LandingPage = () => {
           <div className="h-12" />
           Usage
           <CodeBlock
-            text={`import { Lightbox } from 'lightbox-kit'
+            text={`"use client"
+import { Lightbox } from 'lightbox-kit'
 
 function App() {
   return (
