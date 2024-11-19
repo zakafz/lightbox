@@ -1,7 +1,7 @@
 {
   "name": "lightbox-kit",
   "description": "An image lightbox component for React.",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,6 +10,7 @@
     "bundle": "tsup src/app/lightbox/index.ts"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.4.0",
     "next": "15.0.3",
     "prismjs": "^1.29.0",
     "react": "^18.0.0",
