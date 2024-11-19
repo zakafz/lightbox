@@ -1,0 +1,11 @@
+{
+  "projectSettings": {
+    "rootDirectory": "website"
+  },
+  "builds": [
+    {
+      "src": "website/package.json",
+      "use": "@vercel/next"
+    }
+  ]
+}
