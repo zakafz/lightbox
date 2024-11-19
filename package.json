@@ -1,63 +1,54 @@
 {
   "name": "lightbox-kit",
-  "description": "An image lightbox component for React.",
-  "version": "1.0.9",
+  "version": "2.0.0",
+  "description": "Lightbox Kit is a lightweight and customizable React component designed for creating visually appealing and interactive lightboxes. Perfect to showcase images, this component offers a sleek and user-friendly experience with configurable options.",
+  "main": "index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
-    }
+    },
+    "./dist/styles.css": "./dist/styles.css"
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "files": [
-    "dist",
-    "README.md",
-    "src/app/lightbox"
+    "dist"
   ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "bundle": "tsup src/app/lightbox/index.ts"
+    "build:package": "tsup",
+    "build:website": "cd website && npm install && npm run build",
+    "dev:website": "cd website && npm run dev"
   },
-  "devDependencies": {
-    "@types/node": "^20",
-    "@types/prismjs": "^1.26.5",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "15.0.3",
-    "tailwindcss": "^3.4.1",
-    "tsup": "^8.3.5",
-    "typescript": "^5",
-    "@vercel/analytics": "^1.4.0",
-    "next": "15.0.3",
-    "prismjs": "^1.29.0"
-  },
-  "peerDependencies": {
-    "react": "^18.0.0 || ^19.0.0 || ^19.0.0-rc",
-    "react-dom": "^18.0.0 || ^19.0.0 || ^19.0.0-rc"
-  },
-  "author": "zxk-afz",
-  "license": "MIT",
   "keywords": [
-    "nextjs",
     "next",
-    "typescript",
-    "tailwindcss"
+    "nextjs",
+    "lightbox",
+    "kit",
+    "component"
   ],
+  "author": "zxk-afz",
+  "license": "ISC",
+  "homepage": "https://lightbox-kit.vercel.app/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zxk-afz/lightbox.git"
+    "url": "git+https://github.com/zxk-afz/lightbox.git"
   },
   "bugs": {
     "url": "https://github.com/zxk-afz/lightbox/issues"
   },
-  "homepage": "https://github.com/zxk-afz/lightbox#readme",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "autoprefixer": "^10.4.20",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.15",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0 || ^19.0.0-rc",
+    "react-dom": "^18.0.0 || ^19.0.0 || ^19.0.0-rc"
   }
 }

@@ -1,10 +1,6 @@
-src/app/website/
-src/images/
-.next/
-public/
+webiste/
 node_modules/
-next-env.d.ts
-next.config.ts
 tailwind.config.ts
 tsconfig.json
 tsup.config.ts
+postcss.config.js
