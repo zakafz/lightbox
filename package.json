@@ -1,20 +1,27 @@
 {
   "name": "lightbox-kit",
   "description": "An image lightbox component for React.",
-  "version": "1.0.7",
+  "version": "1.0.8",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "src/app/lightbox"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "bundle": "tsup src/app/lightbox/index.ts"
-  },
-  "dependencies": {
-    "@vercel/analytics": "^1.4.0",
-    "next": "15.0.3",
-    "prismjs": "^1.29.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -23,10 +30,16 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "15.0.3",
-    "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "tsup": "^8.3.5",
-    "typescript": "^5"
+    "typescript": "^5",
+    "@vercel/analytics": "^1.4.0",
+    "next": "15.0.3",
+    "prismjs": "^1.29.0"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0 || ^19.0.0-rc",
+    "react-dom": "^18.0.0 || ^19.0.0 || ^19.0.0-rc"
   },
   "author": "zxk-afz",
   "license": "MIT",
@@ -35,13 +48,6 @@
     "next",
     "typescript",
     "tailwindcss"
-  ],
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "README.md",
-    "src/app/lightbox"
   ],
   "repository": {
     "type": "git",
