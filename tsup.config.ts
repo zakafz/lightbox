@@ -1,9 +1,8 @@
-import { defineConfig } from 'tsup';
+import { defineConfig } from "tsup";
 
 export default defineConfig({
-  entry: ['src/app/lightbox/index.ts'],
-  format: ['cjs', 'esm'],
+  entry: ["src/index.tsx"],
   dts: true,
-  outDir: 'dist',
-  clean: true
+  clean: true,
+  sourcemap: true,
 });
