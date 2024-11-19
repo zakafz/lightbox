@@ -1,5 +1,5 @@
 "use client";
-import Image, { StaticImageData } from "next/image";
+import { StaticImageData } from "next/image";
 import React, { ReactNode, useState, useEffect } from "react";
 
 // Lightbox
@@ -125,28 +125,27 @@ const MainImage = ({
   className,
   alt,
 }: {
-  src: string | StaticImageData; // Accept string or imported image
+  src: string | StaticImageData; 
   theme: "light" | "dark";
   allowDrag: boolean;
   className?: string;
   alt: string;
 }) => {
+  const imageSrc = typeof src === "string" ? src : src.src
 
   return (
     <div className="relative w-full h-full flex items-center justify-center">
-      <Image
+      <img
         draggable={allowDrag}
         alt={alt}
-        width={100000}
-        height={100000}
-        src={src} 
+        src={imageSrc}
         className={`rounded-2xl border max-w-full max-h-full w-auto h-auto
         ${theme === "light" ? "border-[#f3f3f3]" : "border-[#262626]"}
         ${className || ""}`}
         style={{
           maxWidth: "95vw",
-          width: '100%',
-          height: 'auto',
+          width: "100%",
+          height: "auto",
           maxHeight: "85vh",
           objectFit: "contain",
         }}
@@ -154,9 +153,6 @@ const MainImage = ({
     </div>
   );
 };
-
-
-
 
 // Lightbox frame component
 const Frame = ({

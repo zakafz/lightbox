@@ -36,7 +36,6 @@ module.exports = __toCommonJS(lightbox_exports);
 
 // src/app/lightbox/lightbox.tsx
 var import_react = __toESM(require("react"));
-var import_image = __toESM(require("next/image"));
 var Lightbox = ({
   children,
   title,
@@ -134,15 +133,23 @@ var MainImage = ({
   className,
   alt
 }) => {
-  return /* @__PURE__ */ import_react.default.createElement("div", { className: "relative w-full" }, /* @__PURE__ */ import_react.default.createElement(
-    import_image.default,
+  const imageSrc = typeof src === "string" ? src : src.src;
+  return /* @__PURE__ */ import_react.default.createElement("div", { className: "relative w-full h-full flex items-center justify-center" }, /* @__PURE__ */ import_react.default.createElement(
+    "img",
     {
       draggable: allowDrag,
       alt,
-      src,
-      className: `rounded-2xl border max-w-[95vw] w-fit h-fit max-h-[85vh] aspect-auto object-none
-      ${theme === "light" ? "border-[#f3f3f3]" : "border-[#262626]"}
-      ${className || ""}`
+      src: imageSrc,
+      className: `rounded-2xl border max-w-full max-h-full w-auto h-auto
+        ${theme === "light" ? "border-[#f3f3f3]" : "border-[#262626]"}
+        ${className || ""}`,
+      style: {
+        maxWidth: "95vw",
+        width: "100%",
+        height: "auto",
+        maxHeight: "85vh",
+        objectFit: "contain"
+      }
     }
   ));
 };
