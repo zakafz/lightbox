@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@types/prismjs": "^1.26.5",
+    "@vercel/analytics": "^1.4.1",
+    "@vercel/speed-insights": "^1.1.0",
     "lightbox-kit": "file:../dist",
     "next": "15.0.3",
     "prismjs": "^1.29.0",
