@@ -20,11 +20,9 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/index.tsx
 var src_exports = {};
 __export(src_exports, {
-  Lightbox: () => lightbox_default
+  default: () => src_default
 });
 module.exports = __toCommonJS(src_exports);
-
-// src/lightbox.tsx
 var import_react = require("react");
 var import_jsx_runtime = require("react/jsx-runtime");
 var Lightbox = ({
@@ -105,7 +103,7 @@ var Lightbox = ({
     /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { onClick: () => setOpen(true), children })
   ] });
 };
-var lightbox_default = Lightbox;
+var src_default = Lightbox;
 var Overlay = ({
   isClickable,
   opacity,
@@ -217,8 +215,3 @@ var XIcon = (props) => {
     }
   );
 };
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  Lightbox
-});
-//# sourceMappingURL=index.js.map

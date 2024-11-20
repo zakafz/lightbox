@@ -1,6 +1,4 @@
 /* src/global.css */
-@tailwind base;
-@tailwind components;
 *,
 ::before,
 ::after {
@@ -502,4 +500,3 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(243 243 243 / var(--tw-bg-opacity, 1));
 }
-/*# sourceMappingURL=index.css.map */

@@ -17,4 +17,4 @@ declare const Lightbox: ({ children, title, src, isOverlayClickable, overlayClas
     alt: string;
 }) => react_jsx_runtime.JSX.Element;
 
-export { Lightbox };
+export { Lightbox as default };

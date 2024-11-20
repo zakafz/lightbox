@@ -3,8 +3,8 @@ import React, { ReactNode, useEffect, useState } from "react";
 import Link from "next/link";
 import Prism from "prismjs";
 import "prismjs/themes/prism-okaidia.css";
-import lightboxImage from "@/assets/lightbox.png";
-import { Lightbox } from "lightbox-kit";
+import Lightbox from "lightbox-kit";
+import 'lightbox-kit/dist/styles';
 
 const Home = () => {
   return (
@@ -23,7 +23,7 @@ const Home = () => {
           {/* Buttons */}
           <div className="flex flex-row gap-5">
             {/* Preview */}
-            <Lightbox title="lightbox" src={lightboxImage} alt="lightbox">
+            <Lightbox title="lightbox" src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBe3aCKZdDJfdiCwyZCfUUXyuyC2nAd44ouw&s'} alt="lightbox">
               <CustomButton type={2}>Preview</CustomButton>
             </Lightbox>
             {/* Github */}

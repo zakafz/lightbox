@@ -1,22 +1,18 @@
 {
   "name": "lightbox-kit",
-  "version": "2.0.8",
+  "version": "2.2.3",
   "description": "Lightbox Kit is a lightweight and customizable React component designed for creating visually appealing and interactive lightboxes. Perfect to showcase images, this component offers a sleek and user-friendly experience with configurable options.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    },
-    "./dist/styles.css": "./dist/styles.css"
+    ".": "./dist/index.js",
+    "./dist/styles": "./dist/lightbox-kit.css"
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build:package": "tsup",
+    "build:package": "tsup && npx postcss src/global.css -o dist/lightbox-kit.css",
     "build": "cd website && npm install && npm run build",
     "dev:website": "cd website && npm run dev"
   },
@@ -28,7 +24,7 @@
     "component"
   ],
   "author": "zxk-afz",
-  "license": "ISC",
+  "license": "MIT",
   "homepage": "https://lightbox-kit.vercel.app/",
   "repository": {
     "type": "git",
@@ -41,6 +37,8 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "postcss-cli": "^11.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwindcss": "^3.4.15",
