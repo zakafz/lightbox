@@ -4,7 +4,7 @@ import Link from "next/link";
 import Prism from "prismjs";
 import "prismjs/themes/prism-okaidia.css";
 import Lightbox from "lightbox-kit";
-import 'lightbox-kit/dist/styles';
+import '../../node_modules/lightbox-kit/index.css'
 
 const Home = () => {
   return (
@@ -23,7 +23,13 @@ const Home = () => {
           {/* Buttons */}
           <div className="flex flex-row gap-5">
             {/* Preview */}
-            <Lightbox title="lightbox" src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBe3aCKZdDJfdiCwyZCfUUXyuyC2nAd44ouw&s'} alt="lightbox">
+            <Lightbox
+              title="lightbox"
+              src={
+                "https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg"
+              }
+              alt="lightbox"
+            >
               <CustomButton type={2}>Preview</CustomButton>
             </Lightbox>
             {/* Github */}
@@ -46,6 +52,7 @@ const Home = () => {
           <CodeBlock
             text={`"use client"
 import { Lightbox } from 'lightbox-kit'
+import 'lightbox-kit/dist/styles';
 
 function App() {
   return (

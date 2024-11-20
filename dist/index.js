@@ -127,23 +127,15 @@ var MainImage = ({
   className,
   alt
 }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "relative w-full h-full flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "relative flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
     "img",
     {
       draggable: allowDrag,
       alt,
       src,
-      className: `rounded-2xl border max-w-[95vw] max-h-[85vh] 
+      className: `rounded-2xl aspect-auto w-auto h-full border max-w-[95vw] max-h-[85vh] 
       ${theme === "light" ? "border-[#f3f3f3]" : "border-[#262626]"}
-      ${className || ""}`,
-      style: {
-        objectFit: "contain",
-        // Ensures the image maintains aspect ratio
-        width: "100%",
-        // Let the image scale to its container's width
-        height: "100%"
-        // Let the image scale to its container's height
-      }
+      ${className || ""}`
     }
   ) });
 };
