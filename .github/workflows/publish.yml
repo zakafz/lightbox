@@ -10,29 +10,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository
       - uses: actions/checkout@v3
 
-      # Set up Node.js
       - uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 20 
           registry-url: https://registry.npmjs.org/
 
-      # Set the npm registry
       - run: npm config set registry https://registry.npmjs.org/
-
-      # Install dependencies
       - run: npm install
-
-      # Bump the version in package.json without creating a Git tag
       - name: Bump version
-        run: npm version patch --no-git-tag-version
-
-      # Build the package
+        run: |
+          npm version patch --no-git-tag-version
+          cat package.json # Debug: Check updated version in logs
       - run: npm run build:package
-
-      # Publish to npm
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Commit updated package.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add package.json
+          git commit -m "Bump version in package.json"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.LIGHTBOX_GITHUB_TOKEN }}
