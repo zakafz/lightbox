@@ -133,16 +133,9 @@ var MainImage = ({
       draggable: allowDrag,
       alt,
       src,
-      className: `rounded-2xl border max-w-full max-h-full w-auto h-auto
-        ${theme === "light" ? "border-[#f3f3f3]" : "border-[#262626]"}
-        ${className || ""}`,
-      style: {
-        maxWidth: "95vw",
-        width: "100%",
-        height: "auto",
-        maxHeight: "85vh",
-        objectFit: "contain"
-      }
+      className: `rounded-2xl aspect-auto border max-w-[95vw] max-h-[85vh] w-full h-full
+      ${theme === "light" ? "border-[#f3f3f3]" : "border-[#262626]"}
+      ${className || ""}`
     }
   ) });
 };
