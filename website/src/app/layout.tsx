@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Head from "next/head";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "Zxk-Afz",
-      url: "https://github.com/zxk-afz", 
+      url: "https://github.com/zxk-afz",
     },
   ],
   viewport: "width=device-width, initial-scale=1.0",
@@ -74,6 +75,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

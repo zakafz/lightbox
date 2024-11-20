@@ -1,5 +1,4 @@
 "use client";
-import type { Metadata } from "next";
 import React, { ReactNode, useEffect, useState } from "react";
 import Link from "next/link";
 import Prism from "prismjs";
@@ -8,58 +7,6 @@ import Lightbox from "lightbox-kit";
 import "../../node_modules/lightbox-kit/index.css";
 import ImageShowcase from "../assets/lightbox.png";
 
-export const metadata: Metadata = {
-  title: "Lightbox-Kit | Landing Page",
-  description:
-    "Explore Lightbox-Kit, a simple, responsive, and customizable image lightbox component for React. Easily integrate it into your web applications.",
-  keywords:
-    "React, lightbox, image gallery, React component, UI component, image viewer, lightbox-kit, image viewer for React, lightbox demo",
-  authors: [
-    {
-      name: "Zxk-Afz",
-      url: "https://github.com/zxk-afz",
-    },
-  ],
-  viewport: "width=device-width, initial-scale=1.0",
-  robots: "index, follow",
-  openGraph: {
-    type: "website",
-    url: "https://lightbox-kit.vercel.app/landing-page",
-    title: "Lightbox-Kit | Landing Page",
-    description:
-      "Explore Lightbox-Kit, a simple, responsive, and customizable image lightbox component for React. Easily integrate it into your web applications.",
-    images: [
-      {
-        url: "../assets/lightbox.png",
-        width: 800,
-        height: 600,
-        alt: "Lightbox-Kit preview",
-      },
-    ],
-    siteName: "Lightbox-Kit",
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@yourtwitterhandle",
-    title: "Lightbox-Kit | Landing Page",
-    description:
-      "Explore Lightbox-Kit, a simple, responsive, and customizable image lightbox component for React.",
-    images: [
-      {
-        url: "../assets/lightbox.png",
-        width: 800,
-        height: 600,
-        alt: "Lightbox-Kit preview",
-      },
-    ],
-  },
-  icons: [
-    {
-      rel: "icon",
-      url: "./favicon.ico",
-    },
-  ],
-};
 
 const Home = () => {
   return (
