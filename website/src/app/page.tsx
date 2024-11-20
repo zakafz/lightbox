@@ -4,7 +4,7 @@ import Link from "next/link";
 import Prism from "prismjs";
 import "prismjs/themes/prism-okaidia.css";
 import Lightbox from "lightbox-kit";
-import '../../node_modules/lightbox-kit/index.css'
+import 'lightbox-kit/dist/styles';
 
 const Home = () => {
   return (
