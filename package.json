@@ -1,18 +1,18 @@
 {
   "name": "lightbox-kit",
-  "version": "2.2.7",
-  "description": "Lightbox Kit is a lightweight and customizable React component designed for creating visually appealing and interactive lightboxes. Perfect to showcase images, this component offers a sleek and user-friendly experience with configurable options.",
+  "version": "2.2.8",
+  "description": "An image lightbox component for React.",
   "main": "dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./dist/index.js",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js"
+    },
     "./styles": "./dist/index.css"
   },
   "files": [
     "dist"
-  ],
-  "workspaces": [
-    "src/*" 
   ],
   "scripts": {
     "build:package": "tsup",

@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@types/prismjs": "^1.26.5",
-    "lightbox-kit": "^2.2.7",
+    "lightbox-kit": "file:../dist",
     "next": "15.0.3",
     "prismjs": "^1.29.0",
     "react": "19.0.0-rc-66855b96-20241106",
