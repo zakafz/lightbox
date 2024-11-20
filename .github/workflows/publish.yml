@@ -11,28 +11,36 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 20 
+          node-version: 20
           registry-url: https://registry.npmjs.org/
 
       - run: npm config set registry https://registry.npmjs.org/
+
       - run: npm install
+
       - name: Bump version
-        run: |
-          npm version patch --no-git-tag-version
-          cat package.json # Debug: Check updated version in logs
-      - run: npm run build:package
-      - run: npm publish
-        env: 
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Commit updated package.json
+        run: npm version patch --no-git-tag-version
+
+      - name: Commit changes and create tag
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add package.json
           git commit -m "Bump version in package.json"
+          VERSION=$(node -p "require('./package.json').version")
+          git tag v$VERSION
           git push origin main
+          git push origin v$VERSION
         env:
           GITHUB_TOKEN: ${{ secrets.LIGHTBOX_GITHUB_TOKEN }}
+
+      - run: npm run build:package
+
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
