@@ -7,7 +7,6 @@ import Lightbox from "lightbox-kit";
 import "../../node_modules/lightbox-kit/index.css";
 import ImageShowcase from "../assets/lightbox.png";
 
-
 const Home = () => {
   return (
     <>
@@ -262,7 +261,7 @@ const CodeBlock = (props: { text: string }) => {
 
   return (
     <pre
-      className="w-full rounded-lg font-normal text-sm font-mono border border-[#262626]"
+      className="w-full relative rounded-lg font-normal text-sm font-mono border border-[#262626]"
       style={{
         padding: "1rem",
         borderRadius: "8px",
@@ -272,6 +271,22 @@ const CodeBlock = (props: { text: string }) => {
         fontSize: "13px",
       }}
     >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        onClick={() => navigator.clipboard.writeText(props.text)}
+        className="absolute size-4 right-[1rem] text-zinc-500 top-[18px] cursor-pointer"
+      >
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+      </svg>
       <code
         className="language-javascript"
         dangerouslySetInnerHTML={{ __html: highlightedCode }}
