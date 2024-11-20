@@ -25,7 +25,7 @@ jobs:
           cat package.json # Debug: Check updated version in logs
       - run: npm run build:package
       - run: npm publish
-        env:
+        env: 
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Commit updated package.json
         run: |
