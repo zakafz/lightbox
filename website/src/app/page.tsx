@@ -6,10 +6,12 @@ import "prismjs/themes/prism-okaidia.css";
 import Lightbox from "lightbox-kit";
 import "../../node_modules/lightbox-kit/index.css";
 import ImageShowcase from "../assets/lightbox.png";
+import { Toaster, toast } from "sonner";
 
 const Home = () => {
   return (
     <>
+      <Toaster richColors theme="dark" />
       <div className="min-h-screen w-[40%] max-2xl:w-[50%] max-xl:w-[60%] max-lg:w-[95%] mx-auto pt-[200px]">
         {/* Hero */}
         <div className="mx-auto flex flex-col w-fit items-center mb-40">
@@ -281,7 +283,7 @@ const CodeBlock = (props: { text: string }) => {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        onClick={() => navigator.clipboard.writeText(props.text)}
+        onClick={() => {navigator.clipboard.writeText(props.text); toast.success('Succesfully copied code')} }
         className="absolute size-4 right-[1rem] text-zinc-500 top-[18px] cursor-pointer"
       >
         <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
