@@ -133,9 +133,17 @@ var MainImage = ({
       draggable: allowDrag,
       alt,
       src,
-      className: `rounded-2xl aspect-auto border max-w-[95vw] max-h-[85vh] w-full h-full
+      className: `rounded-2xl border max-w-[95vw] max-h-[85vh] 
       ${theme === "light" ? "border-[#f3f3f3]" : "border-[#262626]"}
-      ${className || ""}`
+      ${className || ""}`,
+      style: {
+        objectFit: "contain",
+        // Ensures the image maintains aspect ratio
+        width: "100%",
+        // Let the image scale to its container's width
+        height: "100%"
+        // Let the image scale to its container's height
+      }
     }
   ) });
 };

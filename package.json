@@ -12,7 +12,7 @@
     "dist"
   ],
   "scripts": {
-    "build:package": "tsup && npx postcss src/global.css -o dist/lightbox-kit.css && rm -f dist/index.css",
+    "build:package": "tsup && npx postcss src/global.css -o dist/lightbox-kit.css",
     "build": "cd website && npm install && npm run build",
     "dev:website": "cd website && npm run dev"
   },
