@@ -15,7 +15,8 @@
     "build:package": "tsup",
     "build:local": "tsup && cd website && rm -rf node_moduals && npm install",
     "build": "cd website && npm install && npm run build",
-    "dev": "cd website && npm run dev"
+    "dev": "cd website && npm run dev",
+    "push": "vercel --prod"
   },
   "keywords": [
     "next",
