@@ -1,6 +1,6 @@
 {
   "name": "lightbox-kit",
-  "version": "2.3.4",
+  "version": "2.3.5",
   "description": "An image lightbox component for React.",
   "main": "dist/index.js",
   "types": "./dist/index.d.ts",
@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "build:package": "tsup",
-    "build:local": "tsup && cd website && rm -rf node_moduals && npm install",    
+    "build:local": "tsup && cd website && rm -rf node_moduals && npm install",
     "build": "cd website && npm install && npm run build",
     "dev": "cd website && npm run dev"
   },
