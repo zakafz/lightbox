@@ -5,6 +5,7 @@ import Prism from "prismjs";
 import "prismjs/themes/prism-okaidia.css";
 import Lightbox from "lightbox-kit";
 import '../../node_modules/lightbox-kit/index.css';
+import ImageShowcase from '../assets/lightbox.png'
 
 const Home = () => {
   return (
@@ -25,9 +26,7 @@ const Home = () => {
             {/* Preview */}
             <Lightbox
               title="lightbox"
-              src={
-                "https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg"
-              }
+              src={ImageShowcase}
               alt="lightbox"
             >
               <CustomButton type={2}>Preview</CustomButton>

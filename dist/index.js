@@ -127,12 +127,13 @@ var MainImage = ({
   className,
   alt
 }) => {
+  const imageSrc = typeof src === "string" ? src : src.src;
   return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "relative flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
     "img",
     {
       draggable: allowDrag,
       alt,
-      src,
+      src: imageSrc,
       className: `rounded-2xl aspect-auto w-auto h-full border max-w-[95vw] max-h-[85vh] 
       ${theme === "light" ? "border-[#f3f3f3]" : "border-[#262626]"}
       ${className || ""}`

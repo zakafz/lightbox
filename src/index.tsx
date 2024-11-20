@@ -19,7 +19,7 @@ const Lightbox = ({
 }: {
   children: ReactNode;
   title: string;
-  src: string;
+  src: string | { src: string; [key: string]: any }; // Support both `string` and `StaticImageData`
   isOverlayClickable?: boolean;
   overlayClassName?: string;
   theme?: "light" | "dark";
@@ -124,18 +124,19 @@ const MainImage = ({
   className,
   alt,
 }: {
-  src: string;
+  src: string | { src: string; [key: string]: any }; // Support both `string` and `StaticImageData`
   theme: "light" | "dark";
   allowDrag: boolean;
   className?: string;
   alt: string;
 }) => {
+  const imageSrc = typeof src === 'string' ? src : src.src;
   return (
     <div className="relative flex items-center justify-center">
       <img
         draggable={allowDrag}
         alt={alt}
-        src={src}
+        src={imageSrc}
         className={`rounded-2xl aspect-auto w-auto h-full border max-w-[95vw] max-h-[85vh] 
       ${theme === "light" ? "border-[#f3f3f3]" : "border-[#262626]"}
       ${className || ""}`}
