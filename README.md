@@ -24,7 +24,7 @@ To use Lightbox in your project, import it as follows:
 
 ```javascript
 "use client"
-import { Lightbox } from 'lightbox-kit'
+import Lightbox from 'lightbox-kit'
 import 'lightbox-kit/dist/styles';
 
 function App() {

@@ -51,7 +51,7 @@ const Home = () => {
           Usage
           <CodeBlock
             text={`"use client"
-import { Lightbox } from 'lightbox-kit'
+import Lightbox from 'lightbox-kit'
 import 'lightbox-kit/dist/styles';
 
 function App() {
