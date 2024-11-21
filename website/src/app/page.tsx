@@ -79,8 +79,7 @@ const Home = () => {
           <div className="h-12" />
           Usage
           <CodeBlock
-            text={`"use client"
-import Lightbox from 'lightbox-kit'
+            text={`import Lightbox from 'lightbox-kit'
 import 'lightbox-kit/styles';
 
 function App() {

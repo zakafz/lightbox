@@ -23,7 +23,6 @@ npm install lightbox-kit
 To use Lightbox in your project, import it as follows:
 
 ```javascript
-"use client"
 import Lightbox from 'lightbox-kit'
 import 'lightbox-kit/styles';
 
