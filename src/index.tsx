@@ -1,5 +1,4 @@
 import { ReactNode, useState, useEffect } from "react";
-import "./global.css";
 
 // Lightbox
 const Lightbox = ({

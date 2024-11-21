@@ -12,11 +12,12 @@
     "dist"
   ],
   "scripts": {
-    "build:package": "tsup",
-    "build:local": "tsup && cd website && rm -rf node_moduals && npm install",
+    "build:package": "tsup && npm run build:css",
+    "build:local": "tsup && npm run build:css && cd website && rm -rf node_modules && npm install",
     "build": "cd website && npm install && npm run build",
     "dev": "cd website && npm run dev",
-    "push": "vercel --prod"
+    "push": "vercel --prod",
+    "build:css": "postcss src/global.css -o dist/index.css"
   },
   "keywords": [
     "next",
@@ -41,6 +42,7 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.6",
     "postcss": "^8.4.49",
     "postcss-cli": "^11.0.0",
     "react": "^18.3.1",
@@ -51,6 +53,8 @@
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0 || ^19.0.0-rc",
-    "react-dom": "^18.0.0 || ^19.0.0 || ^19.0.0-rc"
+    "react-dom": "^18.0.0 || ^19.0.0 || ^19.0.0-rc",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1"
   }
 }
