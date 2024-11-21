@@ -39,7 +39,7 @@ const Home = () => {
               </Lightbox>
             </div>
             {/* npm */}
-            <Link 
+            <Link
               target="_blank"
               href="https://www.npmjs.com/package/lightbox-kit"
             >
@@ -151,10 +151,9 @@ function App() {
           <div className="h-12" />
           Image
           <div>
-            The main image shown. Custom class name for the image element
-            itself, allowing additional styling like borders, shadows, or other
-            visual effects. AllowDrag determines whether the image inside the
-            lightbox can be dragged.
+            Custom class name for the image element itself, allowing additional
+            styling like borders, shadows, or other visual effects. AllowDrag
+            determines whether the image inside the lightbox can be dragged.
           </div>
           <CodeBlock
             text={`<Lightbox
