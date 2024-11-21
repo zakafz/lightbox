@@ -24,11 +24,7 @@ const Home = () => {
             An image lightbox component for React.
           </div>
           {/* Buttons */}
-          <div className="flex flex-row gap-5">
-            {/* Preview */}
-            <Lightbox title="lightbox" src={ImageShowcase} alt="lightbox">
-              <CustomButton type={2}>Preview</CustomButton>
-            </Lightbox>
+          <div className="grid grid-cols-3 max-sm:grid-cols-2 gap-5">
             {/* Github */}
             <Link target="_blank" href="https://github.com/zxk-afz/lightbox">
               <CustomButton type={1}>
@@ -36,6 +32,42 @@ const Home = () => {
                 Github
               </CustomButton>
             </Link>
+            {/* Preview */}
+            <div className="max-sm:hidden">
+              <Lightbox title="lightbox" src={ImageShowcase} alt="lightbox">
+                <CustomButton type={2}>Preview</CustomButton>
+              </Lightbox>
+            </div>
+            {/* npm */}
+            <Link
+              target="_blank"
+              href="https://www.npmjs.com/package/lightbox-kit"
+            >
+              <CustomButton type={3}>
+                <svg
+                  width="51.18"
+                  height="20"
+                  viewBox="0 0 256 100"
+                  xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="xMinYMin meet"
+                >
+                  <path
+                    d="M0 0v85.498h71.166V99.83H128V85.498h128V0H0z"
+                    fill="#CB3837"
+                  />
+                  <path
+                    d="M42.502 14.332h-28.17v56.834h28.17V28.664h14.332v42.502h14.332V14.332H42.502zM85.498 14.332v71.166h28.664V71.166h28.17V14.332H85.498zM128 56.834h-13.838v-28.17H128v28.17zM184.834 14.332h-28.17v56.834h28.17V28.664h14.332v42.502h14.332V28.664h14.332v42.502h14.332V14.332h-57.328z"
+                    fill="#FFF"
+                  />
+                </svg>
+              </CustomButton>
+            </Link>
+            {/* Preview */}
+            <div className="sm:hidden col-span-2">
+              <Lightbox title="lightbox" src={ImageShowcase} alt="lightbox">
+                <CustomButton type={2}>Preview</CustomButton>
+              </Lightbox>
+            </div>
           </div>
         </div>
 
@@ -203,7 +235,7 @@ const GithubIcon = (props: { className: string }) => {
   );
 };
 
-const CustomButton = (props: { children: ReactNode; type: 1 | 2 }) => {
+const CustomButton = (props: { children: ReactNode; type: 1 | 2 | 3 }) => {
   function render() {
     switch (props.type) {
       case 1:
@@ -228,6 +260,22 @@ const CustomButton = (props: { children: ReactNode; type: 1 | 2 }) => {
             <div className="bg-gradient-to-b from-stone-300/40 to-transparent p-[4px] rounded-[16px]">
               <button className="group w-[140px] p-[4px] rounded-[12px] bg-gradient-to-b from-white to-stone-200/40 shadow-[0_1px_3px_rgba(0,0,0,0.5)] active:shadow-[0_0px_1px_rgba(0,0,0,0.5)] active:scale-[0.995]">
                 <div className="bg-gradient-to-b from-stone-200/40 to-white/80 rounded-[8px] px-2 py-1.5">
+                  <div className="flex gap-2 items-center justify-center">
+                    <span className="font-semibold text-black">
+                      {props.children}
+                    </span>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </div>
+        );
+      case 3:
+        return (
+          <div className="flex justify-center items-center gap-12 h-full">
+            <div className="bg-gradient-to-b from-red-300/40 to-transparent p-[4px] rounded-[16px]">
+              <button className="group w-[140px] p-[4px] rounded-[12px] bg-gradient-to-b from-red to-red-200/40 shadow-[0_1px_3px_rgba(255,0,0,0.5)] active:shadow-[0_0px_1px_rgba(255,0,0,0.5)] active:scale-[0.995]">
+                <div className="bg-gradient-to-b from-red-500/50 to-red-500/70 rounded-[8px] px-2 py-1.5">
                   <div className="flex gap-2 items-center justify-center">
                     <span className="font-semibold text-black">
                       {props.children}
@@ -283,7 +331,10 @@ const CodeBlock = (props: { text: string }) => {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        onClick={() => {navigator.clipboard.writeText(props.text); toast.success('Succesfully copied code')} }
+        onClick={() => {
+          navigator.clipboard.writeText(props.text);
+          toast.success("Succesfully copied code");
+        }}
         className="absolute size-4 right-[1rem] text-zinc-500 top-[18px] cursor-pointer"
       >
         <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />

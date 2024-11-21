@@ -23,10 +23,25 @@ jobs:
 
       - run: npm install
 
+      # Check if only the 'website' folder is modified
+      - name: Check for changes outside /website
+        id: check_changes
+        run: |
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -v '^website/' > changes.txt || true
+          if [ -s changes.txt ]; then
+            echo "Changes detected outside the /website folder. Proceeding with version bump and publish."
+            echo "publish=true" >> $GITHUB_ENV
+          else
+            echo "No changes outside the /website folder. Skipping publish."
+            echo "publish=false" >> $GITHUB_ENV
+          fi
+
       - name: Bump version
+        if: env.publish == 'true'
         run: npm version patch --no-git-tag-version
 
       - name: Commit changes and create tag
+        if: env.publish == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -40,7 +55,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.LIGHTBOX_GITHUB_TOKEN }}
 
       - run: npm run build:package
+        if: env.publish == 'true'
 
       - run: npm publish
+        if: env.publish == 'true'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
