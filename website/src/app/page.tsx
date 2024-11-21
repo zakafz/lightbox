@@ -39,7 +39,7 @@ const Home = () => {
               </Lightbox>
             </div>
             {/* npm */}
-            <Link
+            <Link 
               target="_blank"
               href="https://www.npmjs.com/package/lightbox-kit"
             >
