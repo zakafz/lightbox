@@ -1,6 +1,6 @@
-import { ReactNode, useRef } from "react";
+import { ReactNode, useState, useEffect } from "react";
 
-// Lightbox Component
+// Lightbox
 const Lightbox = ({
   children,
   title,
@@ -18,7 +18,7 @@ const Lightbox = ({
 }: {
   children: ReactNode;
   title: string;
-  src: string | { src: string; [key: string]: any };
+  src: string | { src: string; [key: string]: any }; // Support both `string` and `StaticImageData`
   isOverlayClickable?: boolean;
   overlayClassName?: string;
   theme?: "light" | "dark";
@@ -30,55 +30,51 @@ const Lightbox = ({
   titleClassName?: string;
   alt: string;
 }) => {
-  const lightboxRef = useRef<HTMLDivElement>(null);
-
+  const [open, setOpen] = useState(false);
   const truncatedTitle =
     title.length > titleMaxLength
-      ? `${title.slice(0, titleMaxLength)}...`
+      ? title.slice(0, titleMaxLength) + "..."
       : title;
 
-  const openLightbox = () => {
-    const lightbox = lightboxRef.current;
-    if (lightbox) {
-      lightbox.dataset.open = "true";
+  useEffect(() => {
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    if (open) {
       document.body.style.overflow = "hidden";
-    }
-  };
-
-  const closeLightbox = () => {
-    const lightbox = lightboxRef.current;
-    if (lightbox) {
-      lightbox.dataset.open = "false";
+      window.addEventListener("keydown", handleEsc);
+    } else {
       document.body.style.overflow = "auto";
+      window.removeEventListener("keydown", handleEsc);
     }
-  };
 
-  const handleEscKey = (e: KeyboardEvent) => {
-    if (e.key === "Escape") closeLightbox();
-  };
+    return () => {
+      document.body.style.overflow = "auto";
+      window.removeEventListener("keydown", handleEsc);
+    };
+  }, [open]);
 
   return (
     <>
       <div
-        ref={lightboxRef}
-        data-open="false"
-        className="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300"
-        onKeyDown={(e) => {
-          if (e.key === "Escape") closeLightbox();
-        }}
-        tabIndex={-1}
+        className={`fixed inset-0 z-50 flex items-center justify-center transition-opacity duration-300 
+            ${open ? "opacity-100" : "opacity-0 pointer-events-none"}`}
       >
         <Overlay
           isClickable={isOverlayClickable}
           overlayClassname={overlayClassName}
           opacity={opacity}
-          closeLightbox={closeLightbox}
+          setOpen={setOpen}
         />
         <Frame
           title={truncatedTitle}
           theme={theme}
           closeIconClassname={closeIconClassname}
-          closeLightbox={closeLightbox}
+          setOpen={setOpen}
+          open={open}
           titleClassName={titleClassName}
         >
           <MainImage
@@ -90,37 +86,36 @@ const Lightbox = ({
           />
         </Frame>
       </div>
-      <div onClick={openLightbox} className="cursor-pointer">
-        {children}
-      </div>
+      <div onClick={() => setOpen(true)}>{children}</div>
     </>
   );
 };
 
 export default Lightbox;
 
-// Overlay Component
+// Lightbox overlay component
 const Overlay = ({
   isClickable,
   opacity,
   overlayClassname,
-  closeLightbox,
+  setOpen,
 }: {
   isClickable?: boolean;
   opacity: number;
   overlayClassname?: string;
-  closeLightbox: () => void;
-}) => (
-  <div
-    style={{ opacity: opacity / 100 }}
-    onClick={isClickable ? closeLightbox : undefined}
-    className={`fixed inset-0 bg-black transition-opacity duration-300 ${
-      overlayClassname || ""
-    }`}
-  />
-);
+  setOpen: (state: boolean) => void;
+}) => {
+  return (
+    <div
+      style={{ opacity: opacity / 100 }}
+      onClick={() => isClickable && setOpen(false)}
+      className={`fixed inset-0 bg-black transition-opacity duration-300 
+        ${overlayClassname || ""}`}
+    />
+  );
+};
 
-// MainImage Component
+// Lightbox image component
 const MainImage = ({
   src,
   theme,
@@ -128,13 +123,13 @@ const MainImage = ({
   className,
   alt,
 }: {
-  src: string | { src: string; [key: string]: any };
+  src: string | { src: string; [key: string]: any }; // Support both `string` and `StaticImageData`
   theme: "light" | "dark";
   allowDrag: boolean;
   className?: string;
   alt: string;
 }) => {
-  const imageSrc = typeof src === "string" ? src : src.src;
+  const imageSrc = typeof src === 'string' ? src : src.src;
   return (
     <div className="relative flex items-center justify-center">
       <img
@@ -142,72 +137,79 @@ const MainImage = ({
         alt={alt}
         src={imageSrc}
         className={`rounded-2xl aspect-auto w-auto h-full border max-w-[95vw] max-h-[85vh] 
-          ${theme === "light" ? "border-[#f3f3f3]" : "border-[#262626]"}
-          ${className || ""}`}
+      ${theme === "light" ? "border-[#f3f3f3]" : "border-[#262626]"}
+      ${className || ""}`}
       />
     </div>
   );
 };
 
-// Frame Component
+// Lightbox frame component
 const Frame = ({
   children,
   title,
   theme,
   closeIconClassname,
-  closeLightbox,
+  setOpen,
+  open,
   titleClassName,
 }: {
   children: ReactNode;
   title: string;
   theme?: "light" | "dark";
   closeIconClassname?: string;
-  closeLightbox: () => void;
+  setOpen: (state: boolean) => void;
+  open: boolean;
   titleClassName?: string;
-}) => (
-  <div
-    className={`relative z-10 rounded-3xl py-5 px-2 pb-2 transform transition-all duration-300 
-      ${theme === "dark" ? "bg-[#171717]" : "bg-[#fcfcfc]"}`}
-  >
-    <div className="flex items-center justify-between mb-2 pr-4 pl-5">
-      <div
-        className={`text-lg font-medium 
-          ${titleClassName || ""} 
-          ${theme === "light" ? "text-black" : "text-white"}`}
-      >
-        {title}
+}) => {
+  return (
+    <div
+      className={`relative z-10 rounded-3xl py-5 px-2 pb-2 transform transition-all duration-300 
+            ${open ? "opacity-100 scale-100" : "opacity-0 scale-95"} 
+            ${theme === "dark" ? "bg-[#171717]" : "bg-[#fcfcfc]"}`}
+    >
+      <div className="flex items-center justify-between mb-2 pr-4 pl-5">
+        <div
+          className={`text-lg font-medium 
+            ${titleClassName}
+            ${theme === "light" ? "text-black" : "text-white"}`}
+        >
+          {title}
+        </div>
+        <button
+          onClick={() => setOpen(false)}
+          className={`rounded-md transition-all duration-200 p-1 
+            ${theme === "light" ? "hover:bg-[#f3f3f3]" : "hover:bg-[#262626]"}`}
+        >
+          <XIcon
+            className={`size-5 
+                ${theme === "light" ? "text-black" : "text-white"} 
+                ${closeIconClassname || ""}`}
+          />
+        </button>
       </div>
-      <button
-        onClick={closeLightbox}
-        className={`rounded-md transition-all duration-200 p-1 
-          ${theme === "light" ? "hover:bg-[#f3f3f3]" : "hover:bg-[#262626]"}`}
-      >
-        <XIcon
-          className={`size-5 
-            ${theme === "light" ? "text-black" : "text-white"} 
-            ${closeIconClassname || ""}`}
-        />
-      </button>
+      {children}
     </div>
-    {children}
-  </div>
-);
+  );
+};
 
-// X Icon Component
-const XIcon = ({ className }: { className?: string }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <line x1="18" y1="6" x2="6" y2="18" />
-    <line x1="6" y1="6" x2="18" y2="18" />
-  </svg>
-);
+// X icon asset
+const XIcon = (props: { className?: string }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={props.className}
+    >
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
+    </svg>
+  );
+};
