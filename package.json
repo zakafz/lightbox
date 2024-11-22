@@ -12,8 +12,10 @@
     "dist"
   ],
   "scripts": {
-    "build:package": "tsup && postcss src/global.css -o dist/index.css && cd website && rm -rf node_modules && npm install",
-    "build": "cd website && npm install && npm run build"
+    "build:package": "tsup && npm run build:css",
+    "build:local": "tsup && npm run build:css && cd website && rm -rf node_modules && npm install",
+    "build": "cd website && npm install && npm run build",
+    "build:css": "postcss src/global.css -o dist/index.css"
   },
   "keywords": [
     "next",
