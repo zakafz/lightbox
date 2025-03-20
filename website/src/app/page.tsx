@@ -355,7 +355,7 @@ const Footer = () => {
         href="https://github.com/zxk-afz"
         className="font-bold hover:cursor-pointer"
       >
-        Zxk-Afz.
+        zakafz
       </Link>
     </div>
   );
