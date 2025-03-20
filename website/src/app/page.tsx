@@ -352,7 +352,7 @@ const Footer = () => {
       Made by
       <Link
         target="_blank"
-        href="https://github.com/zxk-afz"
+        href="https://github.com/zakafz"
         className="font-bold hover:cursor-pointer"
       >
         zakafz
